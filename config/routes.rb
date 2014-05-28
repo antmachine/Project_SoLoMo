@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get '/posts/delete/:id' => 'posts#destroy'
 
   end
-# Macintosh-2:SoLoMo Flanagan$ rake routes
-#                   Prefix Verb   URI Pattern                                       Controller#Action
+  
+#   Prefix Verb   URI Pattern                                       Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)                          devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)                          devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)                         devise/sessions#destroy
@@ -94,7 +94,5 @@ Rails.application.routes.draw do
 #                          PATCH  /events/:id(.:format)                             events#update
 #                          PUT    /events/:id(.:format)                             events#update
 #                          DELETE /events/:id(.:format)                             events#destroy
-#                     root GET    /                                                 comments#index
+#                     root GET    /                                                 posts#index
 #                          GET    /posts/delete/:id(.:format)                       posts#destroy
-
-
