@@ -12,7 +12,7 @@ posts = Post.create ([
 				])
 
 events = Event.create ([
-				{ type: "", date:"06/01/2014", time: "08:00:00", duration: "", address: "", latitude: "37.758900", longitude: "-122.490349", cash_only?: "Yes", description: "Incredibly stuff going on sale, get it while it's hot." },
-				{ type: "", date:"06/03/2014", time: "10:00:00", duration: "", address: "", latitude: "37.761088", longitude: "-122.450030", cash_only?: "Yes", description: "Once-in-a-lifetime collection of ancient artifacts." },
-				{ type: "", date:"05/30/2014", time: "09:30:00", duration: "", address: "", latitude: "37.793414", longitude: "-122.421062", cash_only?: "No", description: "SALE!!!!!! CHECK OUT THESE PICS!" }  
+				{ type: "", date:"01/06/2014", time: "08:00:00", duration: "", address: "2731 Kirkham Street, San Francisco, CA 94122", latitude: "37.758900", longitude: "-122.490349", cash_only?: "Yes", description: "Incredibly stuff going on sale, get it while it's hot." },
+				{ type: "", date:"03/06/2014", time: "10:00:00", duration: "", address: "158A Carmel Street, San Francisco, CA 94117", latitude: "37.761088", longitude: "-122.450030", cash_only?: "Yes", description: "Once-in-a-lifetime collection of ancient artifacts." },
+				{ type: "", date:"30/05/2014", time: "09:30:00", duration: "", address: "1800 Polk Street, San Francisco, CA 94109", latitude: "37.793414", longitude: "-122.421062", cash_only?: "No", description: "SALE!!!!!! CHECK OUT THESE PICS!" }  
 				])
