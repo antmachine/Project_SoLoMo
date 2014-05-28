@@ -1,3 +1,47 @@
+<head>
+<script type="text/javascript" src="/jquery_plugins/slick/slick.js"></script>
+<link rel="stylesheet" type="text/css" href="/jquery_plugins/slick/slick.css">
+</head>
+
+<style>
+    .backdrop {
+        background-color: #333333;
+        padding: 50px;
+    }
+
+    #my_carousel {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    ul.slick-dots {
+        margin: 0 0 0 0;
+    }
+
+    #my_carousel div.car_page {
+        background-color: black;
+        color: #EEEEEE;
+        vertical-align: top;
+    }
+
+    #my_carousel div.car_page div.header {
+        font-weight: bold;
+        border-bottom: 2px solid #EEEEEE;
+    }
+
+
+    #my_carousel div.car_page div {
+        padding: 10px 5px 5px 10px;
+    }
+
+    #my_carousel div.car_page img {
+        display: inline;
+    }
+
+</style>
+
+<!-- ==========================================================================  -->
+
 <div class="map-box">
 	<div id="map-canvas">
 	</div>
@@ -8,5 +52,49 @@
 	<ul class="antmachine">
 	</ul>
 
+	<!-- TODO add javascript to incorporate click functionality -->
+	<div id="map-buttons">
+		<button id="image-carousel" class="btn-small btn">Carousel</button>
+		<button id="comment-option" class="btn-small btn">Comments</button>
+		<button id="new-search" class="btn-small btn">New Search</button>
 
-</div>
+			<div id="carousel-box" style="display: none">
+
+				<!-- ======================	carousel ======================	 -->
+				<div class="backdrop">
+				  <div id="my_carousel" class="slick_carousel">
+				      <div class="car_page">
+				          <div style="text-align: center">
+				            <img class="hero" src="http://clients.stujophoto.com/photos/i-cKB9nDX/0/S/i-cKB9nDX-S.jpg">
+				          </div>
+				          <div class="header">Waves</div>
+		          		<div> </div>
+		      		</div>
+
+		      		<div class="car_page">
+		          	<div style="text-align: center">
+		              <img class="hero" src="http://www.jpproductdevelopment.com/JPPD/Bio_files/shapeimage_1.png">
+		          	</div>
+		          	<div class="header">Handsome</div>
+		          	<div></div>
+		      		</div>
+
+		      		<div class="car_page">
+		          	<div style="text-align: center">
+		              <img class="hero" src="http://photos2.meetupstatic.com/photos/member/7/4/9/2/member_187109842.jpeg">
+		          	</div>
+		          	<div class="header">Ugly</div>
+		          	<div></div>
+		      		</div>
+		      </div>   <!-- div id="my_carousel -->
+		    </div>   <!-- <div class="backdrop"> -->
+		    <!-- ======================	carousel ======================	 -->
+
+
+			</div> <!-- div id="carousel-box"  -->
+	</div>  <!-- div id="map-buttons"> -->
+
+</div> <!-- map-box -->
+
+
+
