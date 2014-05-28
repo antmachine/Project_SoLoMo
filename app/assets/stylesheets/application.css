@@ -14,8 +14,13 @@
  *= require_self
  */
 
-html { height: 100% }
-body { height: 100%; margin: 0; padding: 0 }
-.map-box { height: 100% }
-#map-canvas { height: 50% }
-#pin-data { background-color: red }
+
+ 	html { height: 100% }
+ 	body { height: 100%; margin: 0; padding: 0 }
+
+ 	.map-box { height: 100% }
+	#map-canvas { height: 50% }
+	#pin-data {background-color: red }
+
+
+

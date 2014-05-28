@@ -12,9 +12,6 @@ $(document).ready(function(){
   var marker;
   var map;
 
-
-
-
 	//================================================================
 	function initialize(currentPosition) {
 
@@ -23,65 +20,62 @@ $(document).ready(function(){
 	var mapOptions = {
 		center: new google.maps.LatLng(currCoords.lat, currCoords.long),  // TODO change to current location
 		// center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-		zoom: 12
+		zoom: 13
 	};
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	var geocoder = new google.maps.Geocoder();
 	var pins = [];
 
-	//geolocation function (browser/GPS sensor)
 
-
-
-
-  // function geoLocate() { 
-  //   if(navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-  //       var currentAddress = null;
-
-  //       geocoder.geocode({'latLng': latlng}, function(results, status) {
-  //         if (status == google.maps.GeocoderStatus.OK) {
-  //           currentAddress = results[0].formatted_address;
-  //           document.getElementById('address').value = currentAddress;
-  //         } //inner if branch closure
-  //       }); //geocoder.geocode  
-  //     }); //getCurrentPosition function
-  //   } //top if branch closure
-  // } // geoLocate function closure
-
-
-
-	// grabs DB pins
-	$.get('/pins.json').done(function(data) {
+	//=======================================================================
+	// grabs DB pins for all events
+	$.get('/events.json').done(function(data) {
 		pins = data;
 		$.each(pins, function(index, item){
-			addPin(item.latitude, item.longitude, item.name);
-		});
-	});
+			addPin(item.latitude, item.longitude, item.description);
+		}); //$.each closure
+	}); //$.get closure
 
-	var addPin = function(lat, long, name){
+	var addPin = function(lat, long, description){
+
 		var loc = new google.maps.LatLng(lat, long);
+
 		var newMarker = new google.maps.Marker({
 			position: loc,
 			map: map,
 			title: "BOOM!"
-		});
+		}); // newMarker closure
+
+	// ================ PLEASE WORK ======================
+
+	  google.maps.event.addListener(newMarker, 'click', function() {
+		  var span = $('.antmachine');
+		  var dataWindow =  "<li>"+ description +'</li>';
+		  span.append(dataWindow);
+		}); //event listener marker
+
+
+
+	// ================ PLEASE WORK ======================
+
 	var newInfoWindow = new google.maps.InfoWindow({
-		content: "<h3>Added By: " + name + "</h3>"
-	});
+		content: "<h3>lat: " + lat + ", long: " + long + "</h3>"
+	}); //newInfoWindow closure
+
 		addInfoWindowListener(newMarker, newInfoWindow);
-	};
+	}; //addPin closure
+
 	var placeMaker = function(loc){
 		var newMarker = new google.maps.Marker({
 			position: loc,
 			map: map,
 			title: "BOOM2!"
-		});
-	};
-
+		}); 
+	};  // placeMaker closure
+	//=======================================================================
+	
+	// shows one infowindow at a time
 	var lastInfoWindow;
 	var addInfoWindowListener = function(marker, newInfoWindow){
 		google.maps.event.addListener(marker, 'click', function() {
@@ -95,36 +89,41 @@ $(document).ready(function(){
 				newInfoWindow.open(map,this);
 				lastInfoWindow = newInfoWindow;
 			}
-		});
-	};
-	google.maps.event.addListener(map, 'click', function(event) {
+		});  //google maps event listener closure
+	}; //addInfoWindowListener closure
+
+	google.maps.event.addListener(marker, 'click', function(event) {
 		var lat = event.latLng.lat();
 		var lng = event.latLng.lng();
-	
-		$.ajax({
-			url: "/pins",
-			method: "post",
-			data: {
-				"pin": {
-					"latitude": lat,
-					"longitude": lng,
-					}
-				},
-				dataType: "json",
-				success: function(data) {
-					addPin(data.latitude, data.longitude, data.name);
-				},
-				error: function(){
-					alert("Server is at lunch!");
-				}
-			});
-		});
-	};
+
+	}); // google.maps.event Listener closure
+
+	//=======================================================================
+
+	};  // INITIALIZE CLOSURE  initialize(currentPosition)    ===============
+
+	//   var marker = new google.maps.Marker({
+	//   	position: #
+	//   	map: map,
+	//   	title: "Boom"
+	//   });
+
+	//   google.maps.event.addListener(marker, 'click', function() {
+ //  	$.get('/events.json').done(function(data) {
+	// 		var description = data.description
+	// 	  var span = $('.antmachine');
+	// 	  var dataWindow =  "<li>"+ description +'</li>';
+	// 	  span.append(dataWindow);
+	//   }); //$.get closure
+
+	// }; //event listener marker
+
+	//=======================================================================
 
 	var initializeWithDefault = function(){
-		var currentPosition = {coords: {latitude: "37.758900", longitude: "-122.490349"}}; 
+		var currentPosition = {coords: {latitude: "37.7586", longitude: "-122.4902"}}; 
 		initialize(currentPosition);
-	};
+	}; //initializeWithDefault closure
 
 	var geoLocate = function(){
 		if(!!navigator.geolocation){
@@ -132,17 +131,16 @@ $(document).ready(function(){
 		} else {
 			initializeWithDefault();
 		}
-	};
+	}; //geoLocate closure
 	
 	if(location.pathname === "/pins/new") {
 		geoLocate();
-	}
+	} // if pathname closure
 
 // 
 
 
 
-
-});
+}); //DOCUMENT READY CLOSURE
 
 

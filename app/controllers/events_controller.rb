@@ -5,6 +5,10 @@ class EventsController < ApplicationController
   def index
     # @events = current_user.event.all
     @events = Event.all
+
+    respond_to do |format|
+      format.json { render :json => @events }
+    end
   end
 
   def new
