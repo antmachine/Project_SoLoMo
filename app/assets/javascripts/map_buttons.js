@@ -14,4 +14,9 @@ $(document).ready(function(){
       }
     );
 
+    $("button#new-search").click(function () {
+     // $.load('/events/new');
+     window.location='events/new'
+       });
+
 }); //document ready closure

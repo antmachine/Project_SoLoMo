@@ -1,9 +1,31 @@
 	<%= form_for @event do |f| %>
-	  <%= f.text_field :search_radius, :autofocus => true, :id => "search_radius", :placeholder => "(miles)"%>
+
+ 		<%= f.label "Date: " %>
+ 		<br>
+ 		<%= f.text_field :date, :autofocus => true, :id => "date", :placeholder => "(DD/MM/YY)"%>
+ 		<br>
+ 		<br>
+ 		<%= f.label "Time: " %>
+ 		<br>
+  	<%= f.text_field :time, :autofocus => true, :id => "time", :placeholder => "(time)"%>
+   	<br>
+   	<br>
+   	<%= f.label "Location address: " %>
+   	<br>
+   	<%= f.text_field :address, :autofocus => true, :id => "address", :placeholder =>"i.e. 414 Brannan St."%>
+    <br>
+    <br>
+    <%= f.label "Description/Text:" %>
+    <br>
+    <%= f.text_field :description, :autofocus => true, :id => "description", :placeholder => "Custom message about your event", :style => "width: 300px; height: 100px;"%>
 	  <br>
+	  <br>
+	  <%= f.label "Please add images:" %>
+	  <br>
+	  <%= f.text_field :images, :autofocus => true, :id => "images", :placeholder => ""%> 
+	  <br>
+
 
 	  <p><p>
 	  <%= f.submit "Submit", class: "btn btn-success" %>
 	<% end %>
-
-

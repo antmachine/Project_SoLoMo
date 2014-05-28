@@ -110,7 +110,7 @@ $(document).ready(function(){
 		}
 	}; //geoLocate closure
 	
-	if(location.pathname === "/pins/new") {
+	if(location.pathname === "/" || location.pathname === "/events/") {
 		geoLocate();
 	} // if pathname closure
 

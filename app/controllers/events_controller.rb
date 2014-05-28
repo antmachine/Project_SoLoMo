@@ -3,10 +3,10 @@ class EventsController < ApplicationController
  #  before_filter :check_event_owner, only: [:edit, :update, :destroy]
 
   def index
-    # @events = current_user.event.all
     @events = Event.all
 
     respond_to do |format|
+      format.html 
       format.json { render :json => @events }
     end
   end
@@ -21,16 +21,17 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => 'event was successfully created.') }
-        format.json { render :json => @event, :status => :created } #:location => @event }
-        format.xml  { render :xml => @event, :status => :created }  #:location => @event }
+        format.html { redirect_to "/", :notice => 'event was successfully created.' }
+        format.json { render :json => @event, :status => :created } 
+        format.xml  { render :xml => @event, :status => :created }  
+        # redirect_to events_path
       else
         format.html { render :action => "new" }
         format.json { render :json => @event.errors, :status => :unprocessable_entity }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
+    # redirect_to events_path
     end
-    # redirect_to(event)
   end
 
   def show
@@ -56,7 +57,8 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:address)
+      params.require(:event).permit(:type, :user_id, :picture_id, :date, :time, :duration, :address, :latitude, :longitude, :cash_only, :images, :description, :search_radius )
     end
 
 end
+
