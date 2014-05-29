@@ -5,9 +5,14 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
+    event_hash = @events.map do |event|
+      event_hash = event.attributes
+      event_hash["image_url"] = event.image.url
+      event_hash
+    end
     respond_to do |format|
       format.html 
-      format.json { render :json => @events }
+      format.json { render :json => event_hash }
     end
   end
 
