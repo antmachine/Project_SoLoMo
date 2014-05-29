@@ -23,24 +23,19 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'devise'
 
-
 gem 'geocoder'
-
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-
 gem 'json'
 
-
 # Paperclip gem for uploading images (JP):
-gem 'paperclip'
+gem 'paperclip', github: 'thoughtbot/paperclip'
+
 
 # Amazon web services gem required by Paperclip (JP):
 gem 'aws-sdk'
-
-
 
 
 group :development, :test do
