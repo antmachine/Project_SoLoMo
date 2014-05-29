@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
     event_hash = @events.map do |event|
       event_hash = event.attributes
-      event_hash["image_url"] = event.image.url
+      event_hash["image_url"] = event.pictures.first.try(:image).try(:url)
       event_hash
     end
     respond_to do |format|

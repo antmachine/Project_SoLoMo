@@ -32,8 +32,8 @@ $(document).ready(function(){
 	}); //$.get closure
 
 	var setupCarousel = function(item, $el){
-		console.log(item.image_url);
-		var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header">Waves</div><div> </div></div>'
+		console.log(item.address);
+		var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header"> </div><div> </div></div>'
 		var $imageDiv = $(imageHtml);
 	 	$imageDiv.find("img").attr("src", item.image_url);
 		$("#my_carousel").empty().append($imageDiv);
@@ -59,8 +59,6 @@ $(document).ready(function(){
 		  // var $turkey1 = setupCarousel(item, $htmlChange);
 		  // $(htmlChange).reset();
 		  $htmlChange.html(dataWindow);
-		  // $('#turkey').attr('src', 'item.image_url');
-		  // $('#turkey').append($turkey1)
 
 		  setupCarousel(item, $htmlChange);
 		}); //event listener marker
