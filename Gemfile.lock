@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: b2d9a1a9108c2e01c454fe8e73e7811ba87748c1
+  specs:
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -85,11 +95,6 @@ GEM
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
-    paperclip (4.1.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -185,7 +190,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json
-  paperclip
+  paperclip!
   pg
   pry
   pry-rails
