@@ -4,10 +4,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-
     event_hash = @events.map do |event|
-      event_hash = event.attributes
-      event_hash["image_url"] = event.image.url
+    event_hash = event.attributes
+      # event_hash["image_url"] = event.pictures.first.try(:image).try(:url)
+      
+      event_hash["image_urls"] = event.pictures.map do |x| 
+        x.try(:image).try(:url)
+      end
+
       event_hash
     end
     respond_to do |format|
