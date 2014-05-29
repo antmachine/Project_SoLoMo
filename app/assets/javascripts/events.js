@@ -32,7 +32,7 @@ $(document).ready(function(){
 	}); //$.get closure
 
 	var setupCarousel = function(item, $el){
-		console.log(item.address);
+		console.log(item.image_urls);
 		var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header"> </div><div> </div></div>'
 		var $imageDiv = $(imageHtml);
 	 	$imageDiv.find("img").attr("src", item.image_url);
