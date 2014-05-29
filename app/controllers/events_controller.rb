@@ -36,7 +36,7 @@ class EventsController < ApplicationController
 
   def show
     # @event = current_user.events.find(params[:id])
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
   end
 
   def edit

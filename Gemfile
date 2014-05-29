@@ -37,7 +37,6 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 # Amazon web services gem required by Paperclip (JP):
 gem 'aws-sdk'
 
-
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'
