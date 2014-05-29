@@ -13,6 +13,7 @@ $(document).ready(function(){
 	var currCoords = { lat: currentPosition.coords.latitude, long: currentPosition.coords.longitude };
 
 	var mapOptions = {
+
 		center: new google.maps.LatLng(currCoords.lat, currCoords.long),  // TODO change to current location
 		// center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
 		zoom: 13
@@ -33,10 +34,20 @@ $(document).ready(function(){
 
 	var setupCarousel = function(item, $el){
 		console.log(item.image_urls);
-		var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header"> </div><div> </div></div>'
-		var $imageDiv = $(imageHtml);
-	 	$imageDiv.find("img").attr("src", item.image_url);
-		$("#my_carousel").empty().append($imageDiv);
+		$("#my_carousel").unslick();
+		$("#my_carousel").empty();
+
+		$.each(item.image_urls, function(index, image) {
+		
+			var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header"> </div><div> </div></div>'
+			var $imageDiv = $(imageHtml);
+		 	$imageDiv.find("img").attr("src", image);
+			$("#my_carousel").append($imageDiv);
+		
+		});
+
+		$("#my_carousel").slick();
+
 
 	};
 	// Have to pass all EVENT parameters in addPin function, later rendered in HTML
@@ -47,7 +58,7 @@ $(document).ready(function(){
 		var newMarker = new google.maps.Marker({
 			position: loc,
 			map: map,
-			title: "BOOM!"
+			// title: ""
 		}); // newMarker closure
 
 	// ================================================================
@@ -55,7 +66,7 @@ $(document).ready(function(){
 		// event listener: displays event information in html by map
 	  google.maps.event.addListener(newMarker, 'click', function() {
 		  var $htmlChange = $('.antmachine');
-		  var dataWindow =  "<li> Address: " + item.address + "</li> <br>" + "<li> Description: " + item.description + "</li> <br>" + "<li> Date: " + item.date + "</li> <br>" + "<li> Time: " + item.time + "</li> <br>";
+		  var dataWindow =  "<h5><li> Address: " + item.address + "</li> <br>" + "<li> Description: " + item.description + "</li> <br>" + "<li> Date: " + item.date + "</li> <br>" + "<li> Time: " + item.time + "</li> <br></h5>";
 		  // var $turkey1 = setupCarousel(item, $htmlChange);
 		  // $(htmlChange).reset();
 		  $htmlChange.html(dataWindow);
