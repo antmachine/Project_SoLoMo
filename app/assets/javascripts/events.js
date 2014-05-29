@@ -33,7 +33,8 @@ $(document).ready(function(){
 
 	var setupCarousel = function(item, $el){
 		console.log(item.image_urls);
-		$("#my_carousel").empty()
+		$("#my_carousel").unslick();
+		$("#my_carousel").empty();
 
 		$.each(item.image_urls, function(index, image) {
 		
@@ -43,6 +44,8 @@ $(document).ready(function(){
 			$("#my_carousel").append($imageDiv);
 		
 		});
+
+		$("#my_carousel").slick();
 
 
 	};
