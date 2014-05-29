@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    3.times {@event.pictures.build}
   end
 
   def create
@@ -62,7 +63,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:type, :user_id, :picture_id, :date, :time, :duration, :address, :latitude, :longitude, :cash_only, :image, :description, :search_radius )
+      params.require(:event).permit(:type, :user_id, :date, :time, :duration, :address, :latitude, :longitude, :cash_only, :image, :description, :search_radius, :pictures_attributes=>[:image] )
     end
 
 end
