@@ -33,6 +33,10 @@ $(document).ready(function(){
 
 	var setupCarousel = function(item, $el){
 		console.log(item.image_url);
+		var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header">Waves</div><div> </div></div>'
+		var $imageDiv = $(imageHtml);
+	 	$imageDiv.find("img").attr("src", item.image_url);
+		$("#my_carousel").empty().append($imageDiv);
 
 	};
 	// Have to pass all EVENT parameters in addPin function, later rendered in HTML
@@ -52,11 +56,11 @@ $(document).ready(function(){
 	  google.maps.event.addListener(newMarker, 'click', function() {
 		  var $htmlChange = $('.antmachine');
 		  var dataWindow =  "<li> Address: " + item.address + "</li> <br>" + "<li> Description: " + item.description + "</li> <br>" + "<li> Date: " + item.date + "</li> <br>" + "<li> Time: " + item.time + "</li> <br>";
-		  
-		  
-
+		  // var $turkey1 = setupCarousel(item, $htmlChange);
 		  // $(htmlChange).reset();
 		  $htmlChange.html(dataWindow);
+		  // $('#turkey').attr('src', 'item.image_url');
+		  // $('#turkey').append($turkey1)
 
 		  setupCarousel(item, $htmlChange);
 		}); //event listener marker
