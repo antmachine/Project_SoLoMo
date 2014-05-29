@@ -1,13 +1,14 @@
 	<%= form_for @event, :html => { :multipart => true } do |f| %>
 
- 		<%= f.label "Date: " %>
+ 		
  		<br>
- 		<%= f.text_field :date, :autofocus => true, :id => "date", :placeholder => "(DD/MM/YY)"%>
- 		<br>
- 		<br>
- 		<%= f.label "Time: " %>
- 		<br>
-  	<%= f.text_field :time, :autofocus => true, :id => "time", :placeholder => "(time)"%>
+ 		<%= f.label "Date & Time: " %>
+    <input type="text" id="datetime12" data-format="DD-MM-YYYY h:mm a" data-template="DD / MM / YYYY     hh : mm a" name="datetime" value="21-12-2012 8:30 pm">
+    <script>
+    $(function(){
+    $('#datetime12').combodate();  
+    });
+    </script>
    	<br>
    	<br>
    	<%= f.label "Location address: " %>
@@ -29,9 +30,3 @@
 	  <p><p>
 	  <%= f.submit "Submit", class: "btn btn-success" %>
 	<% end %>
-<input type="text" id="datetime12" data-format="DD-MM-YYYY h:mm a" data-template="DD / MM / YYYY     hh : mm a" name="datetime" value="21-12-2012 8:30 pm">
-<script>
-$(function(){
-    $('#datetime12').combodate();  
-});
-</script>
