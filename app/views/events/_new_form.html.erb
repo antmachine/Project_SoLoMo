@@ -1,16 +1,12 @@
 	<%= form_for @event, :html => { :multipart => true } do |f| %>
 
  		
- 		<br>
  		<%= f.label "Date & Time: " %>
-    <input type="text" id="datetime12" data-format="DD-MM-YYYY h:mm a" data-template="DD / MM / YYYY     hh : mm a" name="datetime" value="21-12-2012 8:30 pm">
-    <script>
-    $(function(){
-    $('#datetime12').combodate();  
-    });
-    </script>
    	<br>
-   	<br>
+    <input id="datetimepicker" type="text" >
+    <br>
+
+
    	<%= f.label "Location address: " %>
    	<br>
    	<%= f.text_field :address, :autofocus => true, :id => "address", :placeholder =>"i.e. 414 Brannan St."%>
@@ -30,3 +26,8 @@
 	  <p><p>
 	  <%= f.submit "Submit", class: "btn btn-success" %>
 	<% end %>
+<link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
+<script src="/jquery.js"></script>
+<script src="/jquery.datetimepicker.js"></script>
+<script type="text/javascript">jQuery('#datetimepicker').datetimepicker();</script>
+
