@@ -29,3 +29,9 @@
 	  <p><p>
 	  <%= f.submit "Submit", class: "btn btn-success" %>
 	<% end %>
+<input type="text" id="datetime12" data-format="DD-MM-YYYY h:mm a" data-template="DD / MM / YYYY     hh : mm a" name="datetime" value="21-12-2012 8:30 pm">
+<script>
+$(function(){
+    $('#datetime12').combodate();  
+});
+</script>
