@@ -1,11 +1,14 @@
 $(document).ready(function(){ 
 
     $("button#image-carousel").click(function () {
-      $("div#carousel-box").fadeIn("slow");
+      $("div#carousel-box").toggle("fast");
     });
-    $("button#comment-option").click(function () {
+    
+    $("button#image-carousel-off").click(function () {
       $("div#carousel-box").fadeOut("fast");
     });
+
+
 
      $('#my_carousel').slick(
       {
@@ -14,7 +17,7 @@ $(document).ready(function(){
       }
     );
 
-    $("button#new-search").click(function () {
+    $("button#new-event").click(function () {
      // $.load('/events/new');
      window.location='events/new'
        });

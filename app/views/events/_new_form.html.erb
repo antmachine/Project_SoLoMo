@@ -3,21 +3,15 @@
  		<%= f.label "Date: " %>
  		<br>
  		<%= f.text_field :date, :autofocus => true, :id => "date", :placeholder => "(DD/MM/YY)"%>
- 		<br>
- 		<br>
- 		<%= f.label "Time: " %>
- 		<br>
-  	<%= f.text_field :time, :autofocus => true, :id => "time", :placeholder => "(time)"%>
-   	<br>
    	<br>
    	<%= f.label "Location address: " %>
    	<br>
-   	<%= f.text_field :address, :autofocus => true, :id => "address", :placeholder =>"i.e. 414 Brannan St."%>
+   	<%= f.text_area :address, :autofocus => true, :id => "address", :placeholder =>"i.e. 414 Brannan St.", :style => "width: 300px; height: 50px;"%>
     <br>
     <br>
     <%= f.label "Description/Text:" %>
     <br>
-    <%= f.text_area :description, :autofocus => true, :id => "description", :placeholder => "Custom message about your event", :style => "width: 300px; height: 100px;"%>
+    <%= f.text_area :description, :autofocus => true, :id => "description", :placeholder => "Custom message about your event", :style => "width: 300px; height: 110px;"%>
 	  <br>
 	  <br>
 	  <%= f.label :image, "Photo" %>
@@ -26,7 +20,6 @@
         <%= builder.label :image, "photo" %>
         <%= builder.file_field :image %>
         <% end %>
-
 	  <br>
 
 
