@@ -4,15 +4,25 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    event_hash = @events.map do |event|
+    event_hash = event.attributes
+      # event_hash["image_url"] = event.pictures.first.try(:image).try(:url)
+      
+      event_hash["image_urls"] = event.pictures.map do |x| 
+        x.try(:image).try(:url)
+      end
 
+      event_hash
+    end
     respond_to do |format|
       format.html 
-      format.json { render :json => @events }
+      format.json { render :json => event_hash }
     end
   end
 
   def new
     @event = Event.new
+    3.times {@event.pictures.build}
   end
 
   def create
@@ -57,7 +67,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:type, :user_id, :picture_id, :date, :time, :duration, :address, :latitude, :longitude, :cash_only, :image, :description, :search_radius )
+      params.require(:event).permit(:type, :user_id, :date, :time, :duration, :address, :latitude, :longitude, :cash_only, :image, :description, :search_radius, :pictures_attributes=>[:image] )
     end
 
 end

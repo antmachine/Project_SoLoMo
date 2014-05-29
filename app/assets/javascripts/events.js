@@ -27,14 +27,22 @@ $(document).ready(function(){
 	$.get('/events.json').done(function(data) {
 		pins = data;
 		$.each(pins, function(index, item){
-			addPin(item.latitude, item.longitude, item.description, item.date, item.time, item.address, item.images, item.search_radius);
+			addPin(item);
 		}); //$.each closure
 	}); //$.get closure
 
-	// Have to pass all EVENT parameters in addPin function, later rendered in HTML
-	var addPin = function(lat, long, description, date, time, address, images, search_radius){
+	var setupCarousel = function(item, $el){
+		console.log(item.image_urls);
+		var imageHtml = ' <div class="car_page"><div style="text-align: center"><img class="hero" ></div><div class="header"> </div><div> </div></div>'
+		var $imageDiv = $(imageHtml);
+	 	$imageDiv.find("img").attr("src", item.image_url);
+		$("#my_carousel").empty().append($imageDiv);
 
-		var loc = new google.maps.LatLng(lat, long);
+	};
+	// Have to pass all EVENT parameters in addPin function, later rendered in HTML
+	var addPin = function(item){
+
+		var loc = new google.maps.LatLng(item.latitude, item.longitude);
 
 		var newMarker = new google.maps.Marker({
 			position: loc,
@@ -46,17 +54,19 @@ $(document).ready(function(){
 
 		// event listener: displays event information in html by map
 	  google.maps.event.addListener(newMarker, 'click', function() {
-		  var htmlChange = $('.antmachine');
-		  var dataWindow =  "<li> Address: " + address + "</li> <br>" + "<li> Description: " + description + "</li> <br>" + "<li> Date: " + date + "</li> <br>" + "<li> Time: " + time + "</li> <br>";
-		  
+		  var $htmlChange = $('.antmachine');
+		  var dataWindow =  "<li> Address: " + item.address + "</li> <br>" + "<li> Description: " + item.description + "</li> <br>" + "<li> Date: " + item.date + "</li> <br>" + "<li> Time: " + item.time + "</li> <br>";
+		  // var $turkey1 = setupCarousel(item, $htmlChange);
 		  // $(htmlChange).reset();
-		  htmlChange.html(dataWindow);
+		  $htmlChange.html(dataWindow);
+
+		  setupCarousel(item, $htmlChange);
 		}); //event listener marker
 
 	// ================================================================
 
 	var newInfoWindow = new google.maps.InfoWindow({
-		content: "<h3>Address: " + address + "</h3>"
+		content: "<h3>Address: " + item.address + "</h3>"
 	}); //newInfoWindow closure
 
 		addInfoWindowListener(newMarker, newInfoWindow);
@@ -74,6 +84,7 @@ $(document).ready(function(){
 	// shows one infowindow at a time
 	var lastInfoWindow;
 	var addInfoWindowListener = function(marker, newInfoWindow){
+
 		google.maps.event.addListener(marker, 'click', function() {
 			if(!!lastInfoWindow){
 				lastInfoWindow.close();

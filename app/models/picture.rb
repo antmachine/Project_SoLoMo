@@ -12,5 +12,6 @@ class Picture < ActiveRecord::Base
 
   # Create ActiveRecord methods to facilitate data retrieval:
   belongs_to :user
+  belongs_to :event
 
 end
