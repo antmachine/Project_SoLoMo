@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
 
   # Create ActiveRecord methods to facilitate data retrieval:
   belongs_to :user
+  has_many :pictures
+  accepts_nested_attributes_for :pictures
 
   # validates_attacent_presence :image
   # validates_attachment_size :image, :less_than => 5.megatbytes

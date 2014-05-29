@@ -22,7 +22,11 @@
 	  <br>
 	  <%= f.label :image, "Photo" %>
 	  <br>
-    <%= f.file_field :image %> 
+      <%= f.fields_for :pictures do |builder|  %>
+        <%= builder.label :image, "photo" %>
+        <%= builder.file_field :image %>
+        <% end %>
+
 	  <br>
 
 
