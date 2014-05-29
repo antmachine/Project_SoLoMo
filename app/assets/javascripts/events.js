@@ -48,6 +48,7 @@ $(document).ready(function(){
 	  google.maps.event.addListener(newMarker, 'click', function() {
 		  var htmlChange = $('.antmachine');
 		  var dataWindow =  "<li> Address: " + address + "</li> <br>" + "<li> Description: " + description + "</li> <br>" + "<li> Date: " + date + "</li> <br>" + "<li> Time: " + time + "</li> <br>";
+		  
 		  // $(htmlChange).reset();
 		  htmlChange.html(dataWindow);
 		}); //event listener marker
