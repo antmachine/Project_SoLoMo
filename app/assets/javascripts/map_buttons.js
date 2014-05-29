@@ -19,4 +19,10 @@ $(document).ready(function(){
      window.location='events/new'
        });
 
+    // $("#new_formblock").on("keypress", function (e) {
+    //   if (e.keyCode == 13) {
+    //       return false;
+    //   }
+    // });
+
 }); //document ready closure

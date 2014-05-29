@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    3.times {@event.pictures.build}
+    5.times {@event.pictures.build}
   end
 
   def create
@@ -44,9 +44,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    @search = SimpleSearch.new SimpleSearch.get_params(params)
+    if @search.valid?
+      @tracks = @search.search_within Events.all, :description
+    end
+  end
+
   def show
     # @event = current_user.events.find(params[:id])
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
   end
 
   def edit
