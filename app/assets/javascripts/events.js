@@ -13,6 +13,7 @@ $(document).ready(function(){
 	var currCoords = { lat: currentPosition.coords.latitude, long: currentPosition.coords.longitude };
 
 	var mapOptions = {
+
 		center: new google.maps.LatLng(currCoords.lat, currCoords.long),  // TODO change to current location
 		// center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
 		zoom: 13
@@ -57,7 +58,7 @@ $(document).ready(function(){
 		var newMarker = new google.maps.Marker({
 			position: loc,
 			map: map,
-			title: "BOOM!"
+			// title: ""
 		}); // newMarker closure
 
 	// ================================================================
@@ -65,7 +66,7 @@ $(document).ready(function(){
 		// event listener: displays event information in html by map
 	  google.maps.event.addListener(newMarker, 'click', function() {
 		  var $htmlChange = $('.antmachine');
-		  var dataWindow =  "<li> Address: " + item.address + "</li> <br>" + "<li> Description: " + item.description + "</li> <br>" + "<li> Date: " + item.date + "</li> <br>" + "<li> Time: " + item.time + "</li> <br>";
+		  var dataWindow =  "<h5><li> Address: " + item.address + "</li> <br>" + "<li> Description: " + item.description + "</li> <br>" + "<li> Date: " + item.date + "</li> <br>" + "<li> Time: " + item.time + "</li> <br></h5>";
 		  // var $turkey1 = setupCarousel(item, $htmlChange);
 		  // $(htmlChange).reset();
 		  $htmlChange.html(dataWindow);

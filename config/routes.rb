@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    # get 'search' , on: :collection
   	resources :comments
   end
 
   root 'events#index'
+
+  get '/events/search' => 'events#search'
 
   get '/posts/delete/:id' => 'posts#destroy'
 
