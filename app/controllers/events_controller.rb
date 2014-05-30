@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
 	# before_filter :signed_in_user, only: [:index, :create, :new, :edit, :update, :destroy, :search]
  #  before_filter :check_event_owner, only: [:edit, :update, :destroy]
+ 
+  skip_before_filter :verify_authenticity_token, only: [:search]
 
   def index
     @events = Event.all
