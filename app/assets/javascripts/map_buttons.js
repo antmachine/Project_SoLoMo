@@ -8,6 +8,9 @@ $(document).ready(function(){
       $("div#carousel-box").fadeOut("fast");
     });
 
+    $("button#new-search").click(function () {
+      $("div#search-box").toggle("fast");
+    });
 
 
      $('#my_carousel').slick(
