@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get '/posts/delete/:id' => 'posts#destroy'
 
+  get '/events/create' => 'events#create'
+
   end
 # Macintosh-2:SoLoMo Flanagan$ rake routes
 #                   Prefix Verb   URI Pattern                                       Controller#Action
